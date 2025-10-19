@@ -6,12 +6,13 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 public class FlightsLoginPage {
-    SelenideElement Username, Password, LoginButton, Message;
+    SelenideElement Username, Password, LoginButton, Message, LogoutButton;
     String successMessage, errorMessage, lockMessage;
     public FlightsLoginPage() {
         Username = $("#username");
         Password = $("#password");
         LoginButton = $("#loginButton");
+        LogoutButton = $("#logoutButton");
         Message = $("#message");
 
         successMessage = "Вход в систему выполнен успешно! Загрузка...";
@@ -37,5 +38,11 @@ public class FlightsLoginPage {
     public void verify_locked_user() {
         Message.shouldHave(text(lockMessage));
     }
+
+    @Step("Выход из системы")
+    public void logout() {
+        LogoutButton.click();
+    }
 }
+
 

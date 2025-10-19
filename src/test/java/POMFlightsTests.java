@@ -41,6 +41,7 @@ public class POMFlightsTests {
         FlightsSearchPage searchPage = new FlightsSearchPage();
         searchPage.findFlights("Москва","Париж", "");
         searchPage.verifyEmptyDate();
+        loginPage.logout();
     }
 
     @Test
@@ -54,6 +55,7 @@ public class POMFlightsTests {
         //Добавить проверку, что не найдены рейсы
         FlightsFoundList foundList = new FlightsFoundList();
         foundList.verifyUnsuccessfullSearch();
+        loginPage.logout();
     }
 
     @Test
@@ -72,6 +74,7 @@ public class POMFlightsTests {
         RegistrationPage registrationPage = new RegistrationPage();
         registrationPage.registrationOnFlight(null, "Левый номер", null, null);
         registrationPage.wrongPassport();
+        loginPage.logout();
     }
     @Test
     @DisplayName("POM-05. Успешная регистрация")
@@ -88,6 +91,7 @@ public class POMFlightsTests {
         RegistrationPage registrationPage = new RegistrationPage();
         registrationPage.registrationOnFlight(null, null, null, null);
         registrationPage.successfulRegistration();
+        loginPage.logout();
     }
     @Test
     @DisplayName("POM-06. Вход заблокированным пользователем")
@@ -117,6 +121,7 @@ public class POMFlightsTests {
         flightsList.chooseFirstFlight();
         registrationPage.registrationOnFlight("петров", "12345", "petrov@mail.ru", "322223");
         registrationPage.successfulRegistration();
+        loginPage.logout();
     }
     @Test
     @DisplayName("POM-08. Отправка формы регистрации с пустыми полями")
